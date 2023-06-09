@@ -21,7 +21,7 @@ function startWebcam() {
 }
 
 function getLabeledFaceDescriptions() {
-  const labels = ["Felipe", "Messi", "Data"];
+  const labels = ["mayank", "nikki"];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
@@ -54,9 +54,9 @@ video.addEventListener("play", async () => {
       .withFaceLandmarks()
       .withFaceDescriptors();
 
-    const resizedDetections = faceapi.resizeResults(detections, displaySize);
-
-    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+      const resizedDetections = faceapi.resizeResults(detections, displaySize);
+      console.log(detections)
+      canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
     const results = resizedDetections.map((d) => {
       return faceMatcher.findBestMatch(d.descriptor);
